@@ -105,14 +105,12 @@ All protected routes require an `Authorization: Bearer <token>` header.
 
 1. **Backend (Render):** New Web Service → connect repo → root directory `server` →
    build command `npm install` → start command `npm start` → add env vars from `.env.example`.
-2. **Frontend (Vercel):** New Project → root directory `client` → framework preset **Vite** →
+2. **Frontend (netlify):** New Project → root directory `client` → framework preset **Vite** →
    add `VITE_API_URL` pointing to the deployed Render backend URL.
-3. Update `CLIENT_URL` in the backend's env vars to the deployed Vercel URL once known.
+3. Update `CLIENT_URL` in the backend's env vars to the deployed netlify URL once known.
 
-## Screenshots
 
-_Add screenshots of Register, Login, and Dashboard (pending/completed views) here before submission._
 
 ## Deployment Link
 
-_Add live deployment link here after deploying._
+https://aetheris-task-manager.netlify.app/
