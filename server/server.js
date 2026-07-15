@@ -13,7 +13,23 @@ const app = express();
 
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "*",
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
+      
+      const clientUrl = process.env.CLIENT_URL ? process.env.CLIENT_URL.replace(/\/$/, "") : "";
+      const cleanedOrigin = origin.replace(/\/$/, "");
+      
+      const isAllowed = 
+        cleanedOrigin === clientUrl || 
+        cleanedOrigin === "https://aetheris-task-manager.netlify.app" ||
+        cleanedOrigin.endsWith("netlify.app");
+        
+      if (isAllowed) {
+        callback(null, true);
+      } else {
+        callback(null, false); // Block other domains safely
+      }
+    },
     credentials: true,
   })
 );
